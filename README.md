@@ -2,10 +2,11 @@
 Given a directory and file type, rename all the files that share the same file type to something the user specifies. Useful for mass renaming. 
 
 ## Objectives:
--Learn how to alter files and maneuver throughout directories using Python.
--Learn more about the git process. 
+- Learn how to alter files and maneuver throughout directories using Python.
+- Learn more about the git process. 
 
 ## How It Can Be Used:
+
 
 ## Resources Used:
 [Working with Files in Python](https://realpython.com/working-with-files-in-python/#copying-moving-and-renaming-files-and-directories)
