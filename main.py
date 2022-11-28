@@ -1,43 +1,39 @@
-import os, functions
-
-def rename(stringToRemove, stringToAdd):
-    os.rename(stringToRemove,stringToAdd)
-    
-def backwards(filePath):
-    occurences = []
-    for i in range(len(filePath)):
-        if filePath[i] == "/":
-            occurences.append(i)
-    
-    lastOccurence = occurences[len(occurences)-1]
-    return filePath[:lastOccurence]
-
-def askUserRename():
-    stringToRemove = input("What string would you like to remove from your files? ")
-    stringToAdd = input("What string would you like to replace it with? ")
-    return stringToRemove, stringToAdd
+import functions
 
 def main():
     while True:
         # os.getcwd() gets the Current Working Directory
-        currDirectory = os.getcwd()
+        currDirectory = functions.getCwd()
+        functions.clear()
         print (f"Current Directory: {currDirectory}") 
-        print (".. to remain in directory, -q to quit, cd to change directory, .b to go back one directory")
-        directoryChange = input("What would you like to do?")
-
-        if directoryChange == "cd":
-            os.chdir(currDirectory + input("Input the file path: "))
+        print ("-q to quit")
+        directoryChange =  input("Remain in directory? (y/n): ").lower()
+        
+        if directoryChange == 'y':
+            stringToRemove = input("What string would you like to remove from your files?: ")
+            stringToReplace = input("What string would you like to replace it with?: ")
+            
+            functions.rename(currDirectory, stringToRemove, stringToReplace)
+            print ("Rename successful!")
+            
+        elif directoryChange == 'n':
+            directoryChange = input("cd to change directory forward, .b to go back one directory: ").lower()
+            if directoryChange == "cd":
+                nextDir = currDirectory + input("Input the next file path: ")
+                if functions.dirExists(nextDir):
+                    functions.changeDir(nextDir)
+                else:
+                    print ("Directory does not exist")
+            elif directoryChange == ".b":
+                functions.changeDir(functions.backwards(currDirectory))
+                continue
+            else:
+                print ("Improper input, try again")   
         elif directoryChange == "-q":
-            break
-        elif directoryChange == ".b":
-            os.chdir(backwards(currDirectory))
-            continue
-        elif not(directoryChange == ".."):
+                break
+        else:
             print ("Improper input, try again")
-            continue
         
-        stringToRemove, stringToAdd = askUserRename()
-        rename(stringToRemove, stringToAdd)
-        
-               
+        functions.delay(1)
+                  
 main()
