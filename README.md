@@ -6,7 +6,11 @@ Given a directory, rename all files that contain a certain string and replaces s
 - Learn more about the git process. 
 
 ## How It Can Be Used:
+![Alt text](/images/disorganized_names.png "Video files with lots of redundant strings")
+Notice how the redundant strings mask the importance of the file names.
 
+![Alt text](/images/organized_names.png "Video files after using rename-files")
+After using rename-files, the files are much clearer to read and understand, while only taking a fraction of the time comparing to manual editing. 
 
 ## Resources Used:
 [Working with Files in Python](https://realpython.com/working-with-files-in-python/#copying-moving-and-renaming-files-and-directories)

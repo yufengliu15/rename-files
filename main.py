@@ -6,33 +6,34 @@ def main():
         currDirectory = functions.getCwd()
         functions.clear()
         print (f"Current Directory: {currDirectory}") 
-        print ("-q to quit")
-        directoryChange =  input("Remain in directory? (y/n): ").lower()
+
+        directoryChange = functions.menu(["Remain in directory", "Change directories", "Print everything in this directory", "Quit"], "Improper input, try again")
         
-        if directoryChange == 'y':
+        if directoryChange == 1:
             stringToRemove = input("What string would you like to remove from your files?: ")
             stringToReplace = input("What string would you like to replace it with?: ")
             
             functions.rename(currDirectory, stringToRemove, stringToReplace)
             print ("Rename successful!")
             
-        elif directoryChange == 'n':
-            directoryChange = input("cd to change directory forward, .b to go back one directory: ").lower()
-            if directoryChange == "cd":
+        elif directoryChange == 2:
+            directoryChange = functions.menu(["Change directory forward", "Go back one directory"],"Improper input, try again")
+
+            if directoryChange == 1:
                 nextDir = currDirectory + input("Input the next file path: ")
                 if functions.dirExists(nextDir):
                     functions.changeDir(nextDir)
                 else:
                     print ("Directory does not exist")
-            elif directoryChange == ".b":
+
+            elif directoryChange == 2:
                 functions.changeDir(functions.backwards(currDirectory))
                 continue
-            else:
-                print ("Improper input, try again")   
-        elif directoryChange == "-q":
-                break
-        else:
-            print ("Improper input, try again")
+
+        elif directoryChange == 3:
+            functions.printDir(currDirectory)
+        elif directoryChange == 4:
+            break
         
         functions.delay(1)
                   
