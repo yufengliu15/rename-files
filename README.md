@@ -1,5 +1,5 @@
 # Rename Files
-Given a directory, rename all files that contain a certain string and replaces said string into a given string. Useful for mass renaming. 
+Given a directory, rename all files that contain a certain string and replaces said string with a given string. Useful for mass renaming. 
 
 ## Objectives:
 - Learn how to alter files and maneuver throughout directories using Python.
